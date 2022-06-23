@@ -1,6 +1,6 @@
 import React from 'react'
 import './navbar.css'
-import LogoIcon from "../../../image/meme-logo.png"
+import LogoIcon from "../Icon/Troll Face.png"
 
 export default function Navbar() {
   return (

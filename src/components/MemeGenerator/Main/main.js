@@ -1,75 +1,77 @@
-import React from 'react'
-import Icon from '../../../image/icon.svg'
-import memesData from '../../../memeData.json'
-import './main.css'
+import React from "react";
+import "./main.css";
 
 export default function Main() {
 
-    const [meme,setMeme] = React.useState({
-        topText:"",
-        bottomText:"",
-        randomImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-FHjQI8zJTyi8yAPepM1VOUrh0vq7JO3BTA&usqp=CAU"
-    })
+    const [meme, setMeme] = React.useState({
+        topText: "Awesome Work",
+        buttomText: "Good Luck!",
+        randomImage: "https://i.imgflip.com/4xgqu.jpg"
+    });
 
-    const [ allMemeImages ] = React.useState(memesData);
-    
-    function getRandomImgUrl(){
-        const memesArray = allMemeImages.data.memes
-        const randomNumber = Math.floor(Math.random() * memesArray.length);
-        const url = memesArray[randomNumber].url
-        setMeme( preMeme => ({
-                ...preMeme,
-                randomImage:url
-            })
-        )
+    const [allMeme,setAllMemes] = React.useState([]);
+
+    React.useEffect(() => {
+        console.log('effect ran')
+        // fetch("https://api.imgflip.com/get_memes")
+        //     .then( res => res.json())
+        //     .then( data => setAllMemes(data.data.memes))
+        async function getMemeData(){
+            const res = await fetch("https://api.imgflip.com/get_memes");
+            const data = await res.json();
+            setAllMemes(data.data.memes)
+        }
+        getMemeData();
+    },[])
+
+    function getRandomImgUrl() {
+        const randomNumber = Math.floor(Math.random() * allMeme.length);
+        const url = allMeme[randomNumber].url;
+        setMeme((preMeme) => ({
+            ...preMeme,
+            randomImage: url,
+        }));
     }
 
-   /*  function handleInputChange(e){
-        console.log(e);
-        setMeme( preMeme => {
+    function handleChange(e) {
+        const {name,value} = e.target;
+        setMeme( prevMeme => {
             return {
-                ...preMeme,
-                topText:e,
-                bottomText:e.value
+                ...prevMeme,
+                [name]:value
             }
-        })
-    } */
+        } )
+
+    }
 
     return (
-        <main className='main'>
-            <div className='form'>
-                <input  type="text" 
-                        value={meme.topText}
-                        className='form--input' 
-                        placeholder='Top text' 
-                        onChange={ e => {
-                            setMeme( preMeme => {
-                                return {
-                                    ...preMeme,
-                                    topText:e.target.value
-                                }
-                            })
-                        }}
-                        
+        <main className="main">
+            <div className="form">
+                <input
+                    type="text"
+                    value={meme.topText}
+                    name="topText"
+                    className="form--input"
+                    placeholder="Top text"
+                    onChange={handleChange}
                 />
-                {/* 
-                    onChange={ e => {
-                            setMeme( preMeme => {
-                                return {
-                                    ...preMeme,
-                                    bottomText:e.target.value
-                                }
-                            })
-                        }}
-                */}
-                <input type="text" value={meme.bottomText} className='form--input' placeholder='Button text'/>
-                <button className='form--btn' onClick={ getRandomImgUrl } ><img src={Icon} alt="memes-img" /></button>
+                <input
+                    type="text"
+                    value={meme.buttomText}
+                    name="buttomText"
+                    className="form--input"
+                    placeholder="Buttom text"
+                    onChange={handleChange}
+                />
+                <button className="form--btn" onClick={getRandomImgUrl}>
+                    Get a new meme image  🖼
+                </button>
             </div>
             <div className="main--img">
-                <h2 className='top-text'>{meme.topText}</h2>
-                <img src={meme.randomImage} alt="" />
-                <h2 className='bottom-text'>{meme.bottomText}</h2>
+                <img src={meme.randomImage} alt="meme-imgs" />
+                <h1 className="top text">{meme.topText}</h1>
+                <h1 className="bottom text">{meme.buttomText}</h1>
             </div>
         </main>
-    )
+    );
 }
