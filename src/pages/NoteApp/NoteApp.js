@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function App() {
+export default function NoteApp() {
   return (
-    <div className='app'>
+    <div>
       
     </div>
   )
