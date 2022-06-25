@@ -4,7 +4,7 @@ import Editor from './Editor'
 import Sidebar from './Sidebar'
 import Split from 'react-split'
 import {nanoid} from 'nanoid'
-import {data} from './data'
+// import {data} from './data'
 
 export default function NoteApp() {
 
