@@ -1,2 +1,2 @@
-# React Week2 Praxis
+# Lota
 
