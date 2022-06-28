@@ -1,12 +1,13 @@
 import React from 'react'
+import './style.css'
 import Nav from './Nav';
-import Animate from './Animate'
+import VideoSlider from './VideoSlider'
 
 export default function Lota() {
   return (
-    <div>
+    <div className='container-lota'>
         <Nav />
-        <Animate />
+        <VideoSlider />
     </div>
   )
 }
