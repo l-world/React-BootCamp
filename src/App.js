@@ -14,6 +14,8 @@ import UserAdmin from './components/UserAdmin'
 import Profile from './components/Profile'
 // import About from './components/About'
 import { AuthProvider } from './components/auth'
+import Login from './components/Login'
+import RequireAuth from './components/RequireAuth'
 
 const LazyAbout = React.lazy( () => import('./components/About') )
 
@@ -36,7 +38,8 @@ export default function App() {
                 <Route path=":userId" element={ <UserDetail /> }  /> {/* 按照id匹配 */}
                 <Route path="admin" element={ <UserAdmin /> } />{/* 匹配具体的路径 */}
             </Route>
-            <Route path="profile" element={ <Profile/> } />
+            <Route path="profile" element={ <RequireAuth><Profile/></RequireAuth>   } />
+            <Route path="login" element={ <Login/> } />
             <Route path="*" element={ <NoMatch /> } />
         </Routes>
         </AuthProvider>
