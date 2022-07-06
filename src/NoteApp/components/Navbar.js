@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './index.css'
+import './navbar.css'
 import Logo from '../icon/logo.svg'
 
 export default function Sidebar() {
@@ -18,8 +18,8 @@ export default function Sidebar() {
         </div>
         <nav className='sidebar--nav'>
             <NavLink style={navLinkStyle} className='sidebar--nav_text' to='/'>Home</NavLink>
-            <NavLink style={navLinkStyle} className='sidebar--nav_text' to="notes">Notes</NavLink>
-            <NavLink style={navLinkStyle} className='sidebar--nav_text' to="contact">Contact</NavLink>
+            <NavLink style={navLinkStyle} className='sidebar--nav_text' to="/notes">Notes</NavLink>
+            <NavLink style={navLinkStyle} className='sidebar--nav_text' to="/contact">Contact</NavLink>
         </nav>
     </div>
   )
