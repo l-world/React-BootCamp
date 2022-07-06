@@ -1,9 +1,15 @@
 import React from 'react'
-import { navLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './index.css'
 import Logo from '../icon/logo.svg'
 
 export default function Sidebar() {
+    const navLinkStyle = () => {
+        return {
+            borderLeft: "3px solid #EC7160",
+            color: "#303030"
+        }
+    }
   return (
     <div className='wrap--sidebar'>
         <div className='logo'>
@@ -11,9 +17,9 @@ export default function Sidebar() {
             <span className='logo--text'>logo</span>
         </div>
         <nav className='sidebar--nav'>
-            <navLink className='sidebar--nav_text' to='/'>Home</navLink>
-            <navLink className='sidebar--nav_text' to="/notes">Notes</navLink>
-            <navLink className='sidebar--nav_text' to="/contact">Contact</navLink>
+            <NavLink style={navLinkStyle} className='sidebar--nav_text' to='/'>Home</NavLink>
+            <NavLink style={navLinkStyle} className='sidebar--nav_text' to="/notes">Notes</NavLink>
+            <NavLink style={navLinkStyle} className='sidebar--nav_text' to="/contact">Contact</NavLink>
         </nav>
     </div>
   )
