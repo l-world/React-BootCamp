@@ -1,5 +1,5 @@
 import React from 'react'
-import trashIcon from './icon/trash.svg'
+import trashIcon from '../icon/trash.svg'
 export default function SideBar(props) {
     const noteElements = props.notes.map( (note,index) => (
         <div key={note.id}>
