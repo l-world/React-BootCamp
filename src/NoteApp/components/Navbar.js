@@ -4,9 +4,9 @@ import './index.css'
 import Logo from '../icon/logo.svg'
 
 export default function Sidebar() {
-    const navLinkStyle = () => {
+    const navLinkStyle = ({isActive}) => {
         return {
-            borderLeft: "3px solid #EC7160",
+            borderLeft: isActive ? "3px solid #EC7160" : "s",
             color: "#303030"
         }
     }
