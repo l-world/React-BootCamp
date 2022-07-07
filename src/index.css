@@ -16,6 +16,7 @@ body {
     display: flex;
 }
 
+
 /* ------------------- */
 /*       Navbar        */
 /* ------------------- */
@@ -26,6 +27,7 @@ body {
     padding-left: 24px;
     padding-top: 40px;
 }
+
 .logo{
     display: flex;
     align-items: center;
@@ -62,6 +64,7 @@ body {
     transition: all 0.25s;
 }
 
+
 /* ------------------- */
 /*       Home page     */
 /* ------------------- */
@@ -93,7 +96,7 @@ body {
     display: block;
     margin: 30px auto 0;
 }
-.wrap--home_btn{
+.btn{
     width: 265px;
     height: 40px;
     background: #EC7160;
@@ -110,8 +113,211 @@ body {
 }
 
 /* ------------------- */
+/*     contact page    */
+/* ------------------- */
+.wrap--contact{
+    width: 600px;
+    margin: 0 auto;
+}
+.wrap--contact_title{
+    margin-top: 61px;
+    font-family: 'DM Sans';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 27px;
+    text-transform: capitalize;
+    color: #303030;
+}
+.wrap--contact_form{
+    margin-top: 31px;
+}
+.row{
+    margin-bottom: 36px;
+}
+.row > label,
+.row > p > label{
+    display: block;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #898989;
+    margin-bottom: 9px;
+}
+.row > input,
+.row > p > input{
+    width: 600px;
+    height: 45px;
+    background: #F6F6F6;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+}
+.first-row{
+    display: flex;
+}
+.first-row > p > input{
+    width: 270px;
+}
+.first-column{
+    margin-right: 61px;
+}
+.row > textarea{
+    width: 600px;
+    height: 135px;
+    background: #F6F6F6;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+}
+.wrap--contact_form_btn{
+    width: 123px;
+    height: 40px;
+    background: #EC7160;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+
+/* ------------------- */
 /*     notes page    */
 /* ------------------- */
+
+/* ---------Note Sidebar css---------- */
+.contaienr--note_sidebar{
+    position: relative;
+    height: 100vh;
+}
+.wrap--note_sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 322px;
+    height: 100%;
+    border-right: 2px solid #E7E7E9;
+}
+.note_sidebar_toggle{
+    transform: translateX(-320px);
+    z-index: -1;
+    transition: all 0.3s;
+}
+.note_sidebar_toggle + .note--sidebar_switch{
+    transform: translateX(-320px) !important;
+    background-image: url('./NoteApp/icon/arrow-left.svg') !important;
+    transition: all 0.3s;
+}
+
+.note--sidebar_switch{
+    position: absolute;
+    top: 42px;
+    left: 305px;
+    width: 28px;
+    height: 28px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border: 2px solid #E7E7E9;
+    border-radius: 50%;
+    background-image: url('./NoteApp/icon/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    z-index: 99;
+}
+.note--sidebar_switch:active{
+    transform: scale(1.2);
+}
+.note--sidebar_btn{
+    width: 265px;
+    margin: 0 auto;
+    margin-top: 78px;
+    display: block;
+    cursor: pointer;
+}
+.note--sidebar_btn:active{
+    transform: scale(0.9);
+    transition: transform 0.15s ease-in;
+}
+.note--sidebar_title{
+    margin-top: 43px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #EC7160;
+    border-top: 2px solid #E7E7E9;
+    border-bottom: 2px solid #E7E7E9;
+    padding: 10px 0  6px 28px;
+}
+.note--sideba_headline{
+   padding-top: 24px;
+   height: calc(100vh - 205px);
+   overflow-y: scroll;
+}
+.note--sideba_headline_row{
+   position: relative;
+   width: 266px;
+   text-align: left;
+   cursor: pointer;
+   margin: 0 auto;
+   margin-bottom: 30px;
+}
+.note--sideba_headline_row:last-of-type{
+    margin-bottom: 0;
+}
+
+.row--active::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 8px 10px;
+    background: #F6F6F6;
+    border-radius: 8px;
+    z-index: -999;
+    position: absolute;
+    top: -10px;
+    left:-16px;
+}
+
+.note--sideba_headline_title{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 27px;
+    color: #303030;
+    margin-bottom: 3px;
+}
+.note--sideba_headline_content{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #898989;
+}
+
+.date{
+    margin-top: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .split {
     display: flex;
@@ -187,77 +393,3 @@ body {
       display: block;
   }
 
-
-
-
-/* ------------------- */
-/*     contact page    */
-/* ------------------- */
-.wrap--contact{
-    width: 600px;
-    margin: 0 auto;
-}
-.wrap--contact_title{
-    margin-top: 61px;
-    font-family: 'DM Sans';
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 27px;
-    text-transform: capitalize;
-    color: #303030;
-}
-.wrap--contact_form{
-    margin-top: 31px;
-}
-.row{
-    margin-bottom: 36px;
-}
-.row > label,
-.row > p > label{
-    display: block;
-    font-family: 'Inter';
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 20px;
-    color: #898989;
-}
-.row > input,
-.row > p > input{
-    width: 600px;
-    height: 45px;
-    background: #F6F6F6;
-    border-radius: 7px;
-    outline: none;
-    border: none;
-}
-.first-row{
-    display: flex;
-}
-.first-row > p > input{
-    width: 270px;
-}
-.first-column{
-    margin-right: 61px;
-}
-.row > textarea{
-    width: 600px;
-    height: 135px;
-    background: #F6F6F6;
-    border-radius: 7px;
-    outline: none;
-    border: none;
-}
-.wrap--contact_form_btn{
-    width: 123px;
-    height: 40px;
-    background: #EC7160;
-    border-radius: 7px;
-    outline: none;
-    border: none;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 20px;
-    color: #FFFFFF;
-}
