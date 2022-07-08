@@ -1,7 +1,7 @@
 import React from 'react'
 import Editor from '../components/Editor'
-import Sidebar from '../components/Sidebar'
-import Split from 'react-split'
+import Sidebar from '../components/NoteSidebar'
+// import Split from 'react-split'
 import { nanoid } from 'nanoid'
 
 export default function NoteApp() {
@@ -22,10 +22,59 @@ export default function NoteApp() {
         localStorage.setItem("notes", JSON.stringify(notes));
     }, [notes])
 
+    function handleDate(){
+        const date = new Date();
+        const year =  date.getFullYear();
+        let month = date.getMonth() + 1;
+        const day = date.getDate();
+        switch(month){
+            case 1:
+                month = "Jan";
+                break;
+            case 2:
+                month = "Feb";
+                break;
+            case 3: 
+                month = "Mar";
+                break;
+            case 4:  
+                month = "Apr";
+                break;
+            case 5: 
+                month = "May";
+                break;
+            case 6: 
+                month = "Jun";
+                break;
+            case 7: 
+                month = "Jul";
+                break;
+            case 8:
+                month = "Aug"; 
+                break;
+            case 9:
+                month = "Sep"; 
+                break;
+            case 10: 
+                month = "Oct";
+                break;
+            case 11: 
+                 month =  "Nov";
+                 break;
+            case 12: 
+                month = "Dec";
+                break;
+            default:
+                return "";
+        }
+        return `${month} ${day}, ${year}`
+    }
+
     function createNewNote() {
         const newNote = {
             id: nanoid(),
-            body: "# Type your markdown note's title here"
+            body: "# Type your markdown note's title here",
+            date: handleDate(),
         }
 
         setNotes(prevNotes => [newNote, ...prevNotes]);
@@ -66,43 +115,21 @@ export default function NoteApp() {
     }
 
     return (
-        <main>
+        <main className='note-container'>
+            <Sidebar
+                notes={notes}
+                currentNoteId={currentNoteId}
+                setCurrentNoteId={setCurrentNoteId}
+                newNote={createNewNote}
+                deleteNote={deleteNote}
+            />
             {
-                notes.length > 0
-                    ?
-                    <Split
-                        sizes={[25, 75]}
-                        direction="horizontal"
-                        className='split'
-                        gutterSize={10}
-                        cursor="col-resize"
-                    >
-                        <Sidebar
-                            notes={notes}
-                            currentNoteId={currentNoteId}
-                            setCurrentNoteId={setCurrentNoteId}
-                            newNote={createNewNote}
-                            deleteNote={deleteNote}
-                        />
-                        {
-                            currentNoteId &&
-                            notes.length > 0 &&
-                            <Editor
-                                currentNote={findCurrentNote()}
-                                updateNote={updateNote}
-                            />
-                        }
-                    </Split>
-                    :
-                    <div className="no-notes">
-                        <h1>You have no notes</h1>
-                        <button
-                            className='first-note'
-                            onClick={createNewNote}
-                        >
-                            Create one now
-                        </button>
-                    </div>
+                currentNoteId &&
+                notes.length > 0 &&
+                <Editor
+                    currentNote={findCurrentNote()}
+                    updateNote={updateNote}
+                />
             }
         </main>
     )

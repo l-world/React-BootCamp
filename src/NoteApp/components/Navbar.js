@@ -14,7 +14,7 @@ export default function Sidebar() {
                 <NavLink className='navbar--text' to='/'>Home</NavLink>
                 <NavLink className='navbar--text' to="/notes">Notes</NavLink>
                 <NavLink className='navbar--text' to="/contact">Contact</NavLink>
-                <NavLink className='navbar--text' to="/test">Test</NavLink>
+                {/* <NavLink className='navbar--text' to="/test">Test</NavLink> */}
             </nav>
         </div>
     )
