@@ -7,28 +7,32 @@ import Contact from './NoteApp/pages/Contact'
 import Login from './NoteApp/pages/Login'
 import Signup from './NoteApp/pages/SignUp'
 import NotFound from './NoteApp/pages/NotFound'
+import { AuthProvider } from './NoteApp/components/Auth'
+import AuthRequire from './NoteApp/components/AuthRequire'
+
+import { useLocation } from 'react-router-dom'
 
 export default function App() {
+    const location =  useLocation();
+
     return (
-        <>
-           {/*  <Routes>
-                <Route path="/login" element={<Login />}></Route>
-                <Route path="/signup" element={<Signup />}></Route>
-                <Route path="*" element={<NotFound />}></Route>
-            </Routes> */}
+        <AuthProvider>
             <div className='container'>
-                <Navbar />
+                { ( location.pathname === '/' 
+                    || location.pathname === '/notes' 
+                    || location.pathname === '/contact') 
+                    ? <Navbar />  
+                    : "" 
+                }
                 <Routes>
                     <Route path="/" element={<Home />}></Route>
-                    <Route path="/notes" element={<Notes />}></Route>
-                    <Route path="/contact" element={<Contact />}></Route>
+                    <Route path="/notes" element={ <AuthRequire><Notes /></AuthRequire>  }></Route>
+                    <Route path="/contact" element={ <AuthRequire><Contact /></AuthRequire>  }></Route>
                     <Route path="/login" element={<Login />}></Route>
                     <Route path="/signup" element={<Signup />}></Route>
                     <Route path="*" element={<NotFound />}></Route>
-                    {/* <Route path="/*" element={<NotFound />}></Route> */}
                 </Routes>
             </div>
-
-        </>
+        </AuthProvider>
     )
 }
