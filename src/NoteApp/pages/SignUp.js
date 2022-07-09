@@ -1,10 +1,10 @@
 import React from 'react'
-import Sign from '../components/SignIn'
+import Account from '../components/Account'
 import signUpBg from '../icon/sign-up.svg'
 
 export default function SignUp() {
     return (
-        <Sign
+        <Account
             bgSrc={signUpBg}
             title="Signup"
             btnText="Signup"

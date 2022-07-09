@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function SignIn(props) {
+export default function account(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
