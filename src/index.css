@@ -385,7 +385,7 @@ body {
 }
 
 /* ------------------- */
-/*     signin page    */
+/*     account page    */
 /* ------------------- */
 .container--signin{
     display: flex;
@@ -550,4 +550,16 @@ body {
     line-height: 28px;
     color: #8692A6;
     margin-top: 10px;
+}
+
+/* ------------------- */
+/*     notfound page    */
+/* ------------------- */
+.not_found{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
 }
