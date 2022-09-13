@@ -5,12 +5,13 @@ import React from 'react'
 // import Imperative from './Hooks/UseImperativeHandle/ImperativeHandleDemo'
 // import Context from './Hooks/UseContext/ContextDemo'
 // import Memo from './Hooks/UseMemo/MemoDemo'
-import Callback from './Hooks/UseCallback/CallBackDemo'
+// import Callback from './Hooks/UseCallback/CallBackDemo'
+import UseId from './Hooks/UseId/Test'
 
 export default function App() {
   return (
     <div>
-        <Callback />
+        <UseId />
     </div>
   )
 }
